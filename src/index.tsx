@@ -1,6 +1,9 @@
 import React, { FunctionComponent, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { Button } from "./components/button/button";
+import { InputValue } from "./components/inputs/inputValue";
+import "./assets/css/app.css";
+import { Card } from "./components/card/card";
+import { CardColumn } from "./components/cardColumn/cardColumn";
 
 const App: FunctionComponent = () => {
   const [count, setCount] = useState<number>(0);
@@ -8,27 +11,34 @@ const App: FunctionComponent = () => {
     console.log("I love webpack and typescript.");
   };
 
+  const onChange = (evt: any) => {
+    console.log("evt.target.value: ", evt.target.value);
+  };
+
   return (
     <>
-      <div>
-        <Button text="HEEEYOOO BUY STUFF YO NEED IT!" onClick={onClick} />
+      <Card>
+        <CardColumn>
+          <label>Logo 1</label>
+          <label>Logo 2</label>
+        </CardColumn>
 
-        <a href="https://react.dev" target="_blank">
-          {/* <img src={logoReact} className="logo react" alt="React logo" /> */}
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <CardColumn>
+          <InputValue type="text" text="Card Number" onChange={onChange} />
+        </CardColumn>
+
+        <CardColumn>
+          <CardColumn>
+            <InputValue type="text" text="Card Name" onChange={onChange} />
+          </CardColumn>
+
+          <CardColumn>
+            <InputValue type="number" text="Month" onChange={onChange} />
+            <InputValue type="number" text="Year" onChange={onChange} />
+            <InputValue type="number" text="CCV" onChange={onChange} />
+          </CardColumn>
+        </CardColumn>
+      </Card>
     </>
   );
 };
