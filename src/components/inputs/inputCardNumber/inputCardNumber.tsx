@@ -3,10 +3,11 @@ import { InputValue } from "../inputValue";
 import { getCardStartsWith } from "@/helpers/card/getCardType";
 import { CardTypes } from "@/enums/card/cardTypes";
 import { validateCardNumber } from "@/helpers/card/validateCardNumber";
-import { isNumeric } from "@/helpers/card/isNumeric";
+import { isNumeric } from "@/helpers/value/isNumeric";
 
 export const InputCardNumber: FunctionComponent<{}> = ({}) => {
   const [inputValue, setInputValue] = useState<string>("");
+  const [displayValue, setDisplayValue] = useState<string>("");
   const [cardType, setCardType] = useState<CardTypes>(CardTypes.unknown);
 
   const onInputChanged = (evt: any) => {
@@ -47,6 +48,9 @@ export const InputCardNumber: FunctionComponent<{}> = ({}) => {
       text={"Card Number"}
       type={"number"}
       value={inputValue}
+      displayValue={displayValue}
+      min={15}
+      max={16}
       onChange={onInputChanged}
     />
   );

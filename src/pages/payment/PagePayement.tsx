@@ -3,6 +3,8 @@ import { CardColumn } from "../../components/cardColumn/cardColumn";
 import { Card } from "@/components/card/card";
 import { InputValue } from "@/components/inputs/inputValue";
 import { InputCardNumber } from "@/components/inputs/inputCardNumber/inputCardNumber";
+import { InputCardName } from "@/components/inputs/inputCardName/inputCardName";
+import { InputCardCSV } from "@/components/inputs/inputCardCSV/inputCardCSV";
 
 export const PagePayement: FunctionComponent = () => {
   const [count, setCount] = useState<number>(0);
@@ -26,13 +28,13 @@ export const PagePayement: FunctionComponent = () => {
 
         <CardColumn>
           <CardColumn>
-            <InputValue type="text" text="Card Name" onChange={onChange} />
+            <InputCardName />
           </CardColumn>
 
           <CardColumn>
             <InputValue type="number" text="Month" onChange={onChange} />
             <InputValue type="number" text="Year" onChange={onChange} />
-            <InputValue type="number" text="CCV" onChange={onChange} />
+            <InputCardCSV />
           </CardColumn>
         </CardColumn>
       </Card>

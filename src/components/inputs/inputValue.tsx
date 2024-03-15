@@ -12,14 +12,14 @@ const InputType = styled.input`
   height: 20px;
   border-radius: 4px;
 
-  display: block;
-  word-wrap: break-word;
-  columns: 5;
-  -webkit-columns: 5;
-  -moz-columns: 5;
-  column-gap: 0.2em;
-  -webkit-column-gap: 0.2em;
-  -moz-column-gap: 0.2em;
+  // display: block;
+  // word-wrap: break-word;
+  // columns: 5;
+  // -webkit-columns: 5;
+  // -moz-columns: 5;
+  // column-gap: 0.2em;
+  // -webkit-column-gap: 0.2em;
+  // -moz-column-gap: 0.2em;
 `;
 
 const InputLabel = styled.label`
@@ -32,12 +32,21 @@ export const InputValue: FunctionComponent<{
   text: string;
   type: "number" | "text";
   value?: string;
+  displayValue?: string;
+  min?: number;
+  max?: number;
   onChange: ChangeEventHandler<HTMLInputElement>;
-}> = ({ text, value, onChange }) => {
+}> = ({ text, value, min, max, onChange }) => {
   return (
     <InputContainer>
       <InputLabel>{text}</InputLabel>
-      <InputType type="text" value={value} onChange={onChange} />
+      <InputType
+        type="text"
+        value={value}
+        minLength={min}
+        maxLength={max}
+        onChange={onChange}
+      />
     </InputContainer>
   );
 };
