@@ -27,7 +27,7 @@ export const InputCardCSV: FunctionComponent<{}> = ({}) => {
       value={inputValue}
       displayValue={displayValue}
       min={3}
-      max={3}
+      max={4}
       onChange={onInputChanged}
     />
   );
