@@ -45,6 +45,7 @@ export const InputCardNumber: FunctionComponent<{}> = ({}) => {
 
   return (
     <InputValue
+      id={"cardNumber"}
       text={"Card Number"}
       type={"number"}
       value={inputValue}

@@ -29,6 +29,7 @@ const InputLabel = styled.label`
 `;
 
 export const InputValue: FunctionComponent<{
+  id: string;
   text: string;
   type: "number" | "text";
   value?: string;
@@ -36,16 +37,19 @@ export const InputValue: FunctionComponent<{
   min?: number;
   max?: number;
   onChange: ChangeEventHandler<HTMLInputElement>;
-}> = ({ text, value, min, max, onChange }) => {
+}> = ({ id, text, value, min, max, onChange }) => {
   return (
     <InputContainer>
-      <InputLabel>{text}</InputLabel>
+      <InputLabel htmlFor={id}>{text}</InputLabel>
       <InputType
+        id={id}
+        aria-label={text}
         type="text"
         value={value}
         minLength={min}
         maxLength={max}
         onChange={onChange}
+        required
       />
     </InputContainer>
   );

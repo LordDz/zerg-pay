@@ -23,6 +23,7 @@ export const InputCardName: FunctionComponent<{}> = ({}) => {
 
   return (
     <InputValue
+      id={"cardName"}
       text={"Name"}
       type={"text"}
       value={inputValue}
