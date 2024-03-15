@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom/client";
 import "./assets/css/app.css";
-import { PagePayement } from "./pages/payment/PagePayement";
+import { PagePayement } from "@/pages/payment/PagePayement";
 
 const App: FunctionComponent = () => {
   return <PagePayement />;

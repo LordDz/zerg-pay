@@ -11,6 +11,15 @@ const InputType = styled.input`
   width: 100%;
   height: 20px;
   border-radius: 4px;
+
+  display: block;
+  word-wrap: break-word;
+  columns: 5;
+  -webkit-columns: 5;
+  -moz-columns: 5;
+  column-gap: 0.2em;
+  -webkit-column-gap: 0.2em;
+  -moz-column-gap: 0.2em;
 `;
 
 const InputLabel = styled.label`
@@ -22,12 +31,13 @@ const InputLabel = styled.label`
 export const InputValue: FunctionComponent<{
   text: string;
   type: "number" | "text";
+  value?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-}> = ({ text, onChange }) => {
+}> = ({ text, value, onChange }) => {
   return (
     <InputContainer>
       <InputLabel>{text}</InputLabel>
-      <InputType type="text" onChange={onChange} />
+      <InputType type="text" value={value} onChange={onChange} />
     </InputContainer>
   );
 };
