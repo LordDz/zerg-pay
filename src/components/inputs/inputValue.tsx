@@ -13,6 +13,12 @@ const InputType = styled.input`
   border-radius: 4px;
 `;
 
+const InputLabel = styled.label`
+  display: flex;
+  width: max-content;
+  text-shadow: 2px 2px 5px black;
+`;
+
 export const InputValue: FunctionComponent<{
   text: string;
   type: "number" | "text";
@@ -20,7 +26,7 @@ export const InputValue: FunctionComponent<{
 }> = ({ text, onChange }) => {
   return (
     <InputContainer>
-      <label>{text}</label>
+      <InputLabel>{text}</InputLabel>
       <InputType type="text" onChange={onChange} />
     </InputContainer>
   );

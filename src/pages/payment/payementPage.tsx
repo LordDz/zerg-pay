@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { InputValue } from "./components/inputs/inputValue";
 import "./assets/css/app.css";
-import { Card } from "./components/card/card";
-import { CardColumn } from "./components/cardColumn/cardColumn";
+import { CardColumn } from "../../components/cardColumn/cardColumn";
+import { Card } from "components/card/card";
 
-const App: FunctionComponent = () => {
+const PayementPage: FunctionComponent = () => {
   const [count, setCount] = useState<number>(0);
   const onClick = () => {
     console.log("I love webpack and typescript.");
