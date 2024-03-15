@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from "react";
-import ReactDOM from "react-dom/client";
-import "./assets/css/app.css";
 import { CardColumn } from "../../components/cardColumn/cardColumn";
-import { Card } from "components/card/card";
+import { Card } from "@/components/card/card";
+import { InputValue } from "@/components/inputs/inputValue";
 
-const PayementPage: FunctionComponent = () => {
+export const PagePayement: FunctionComponent = () => {
   const [count, setCount] = useState<number>(0);
   const onClick = () => {
     console.log("I love webpack and typescript.");
@@ -43,9 +42,3 @@ const PayementPage: FunctionComponent = () => {
     </>
   );
 };
-
-const rootCheck = document.getElementById("root");
-if (rootCheck != null) {
-  const root = ReactDOM.createRoot(rootCheck);
-  root.render(<App />);
-}
