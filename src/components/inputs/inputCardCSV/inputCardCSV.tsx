@@ -12,6 +12,7 @@ export const InputCardCSV: FunctionComponent<{ cardType: CardTypes }> = ({
   const onInputChanged = (evt: any) => {
     const value = evt?.target?.value;
     if (!value || value == undefined || value == null || value.length < 1) {
+      setInputValue("");
       return;
     }
 
@@ -30,8 +31,8 @@ export const InputCardCSV: FunctionComponent<{ cardType: CardTypes }> = ({
       type={"number"}
       value={inputValue}
       displayValue={displayValue}
-      min={cardType == CardTypes.americanExpress ? 4 : 3}
       max={cardType == CardTypes.americanExpress ? 4 : 3}
+      disabled={cardType == CardTypes.unknown}
       onChange={onInputChanged}
     />
   );

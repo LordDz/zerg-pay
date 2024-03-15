@@ -14,6 +14,7 @@ export const InputCardNumber: FunctionComponent<{}> = ({}) => {
     const value = evt?.target?.value;
     if (!value || value == undefined || value == null || value.length < 1) {
       setCardType(CardTypes.unknown);
+      setInputValue("");
     }
 
     let valueStr = value as string;
@@ -50,7 +51,6 @@ export const InputCardNumber: FunctionComponent<{}> = ({}) => {
       type={"number"}
       value={inputValue}
       displayValue={displayValue}
-      min={15}
       max={16}
       onChange={onInputChanged}
     />

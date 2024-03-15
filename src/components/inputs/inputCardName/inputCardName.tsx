@@ -28,7 +28,6 @@ export const InputCardName: FunctionComponent<{}> = ({}) => {
       type={"text"}
       value={inputValue}
       displayValue={displayValue}
-      min={4}
       max={1000}
       onChange={onInputChanged}
     />

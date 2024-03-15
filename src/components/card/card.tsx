@@ -9,7 +9,7 @@ const CardOuter = styled.div`
   background-image: url(https://img.freepik.com/free-photo/vibrant-colors-flow-abstract-wave-pattern-generated-by-ai_188544-9781.jpg?size=626&ext=jpg&ga=GA1.1.735520172.1710374400&semt=ais);
   border-radius: 10px;
   min-width: 300px;
-  max-width: 30em;
+  max-width: 25em;
 `;
 
 const CardInner = styled.div`

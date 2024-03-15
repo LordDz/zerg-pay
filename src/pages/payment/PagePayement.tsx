@@ -5,12 +5,10 @@ import { InputCardNumber } from "@/components/inputs/inputCardNumber/inputCardNu
 import { InputCardName } from "@/components/inputs/inputCardName/inputCardName";
 import { InputCardCSV } from "@/components/inputs/inputCardCSV/inputCardCSV";
 import { CardTypes } from "@/enums/card/cardTypes";
+import { Icon } from "@/components/icons/icon";
 
 export const PagePayement: FunctionComponent = () => {
-  const [count, setCount] = useState<number>(0);
-  const onClick = () => {
-    console.log("I love webpack and typescript.");
-  };
+  const [cardType, setCardType] = useState<CardTypes>(CardTypes.visa);
 
   const onChange = (evt: any) => {};
 
@@ -18,8 +16,8 @@ export const PagePayement: FunctionComponent = () => {
     <form>
       <Card>
         <CardColumn>
-          <label>Logo 1</label>
-          <label>Logo 2</label>
+          <Icon cardType={CardTypes.unknown} />
+          <Icon cardType={cardType} />
         </CardColumn>
 
         <CardColumn>

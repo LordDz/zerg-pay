@@ -34,10 +34,10 @@ export const InputValue: FunctionComponent<{
   type: "number" | "text";
   value?: string;
   displayValue?: string;
-  min?: number;
   max?: number;
+  disabled?: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
-}> = ({ id, text, value, min, max, onChange }) => {
+}> = ({ id, text, value, max, disabled, onChange }) => {
   return (
     <InputContainer>
       <InputLabel htmlFor={id}>{text}</InputLabel>
@@ -46,9 +46,9 @@ export const InputValue: FunctionComponent<{
         aria-label={text}
         type="text"
         value={value}
-        minLength={min}
         maxLength={max}
         onChange={onChange}
+        disabled={disabled}
         required
       />
     </InputContainer>
