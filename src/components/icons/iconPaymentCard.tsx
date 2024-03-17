@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import { CardTypes } from "@/enums/card/cardTypes";
-import { IconMasterCard } from "./icons/iconMasterCard";
-import { IconAmericanExpress } from "./icons/iconAmericanExpress";
-import { IconVisa } from "./icons/iconVisa";
-import { IconDiscover } from "./icons/iconDiscover";
-import { IconUnknown } from "./icons/iconUnknown";
+import { IconMasterCard } from "./paymentCards/iconMasterCard";
+import { IconAmericanExpress } from "./paymentCards/iconAmericanExpress";
+import { IconVisa } from "./paymentCards/iconVisa";
+import { IconDiscover } from "./paymentCards/iconDiscover";
+import { IconUnknown } from "./paymentCards/iconUnknown";
 
 const renderIcon = (cardType: CardTypes) => {
   switch (cardType) {
@@ -20,7 +20,7 @@ const renderIcon = (cardType: CardTypes) => {
   return IconUnknown;
 };
 
-export const Icon: FunctionComponent<{
+export const IconPaymentCard: FunctionComponent<{
   cardType: CardTypes;
 }> = ({ cardType }) => {
   return renderIcon(cardType);

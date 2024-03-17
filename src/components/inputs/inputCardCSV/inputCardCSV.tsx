@@ -1,27 +1,33 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { InputValue } from "../inputValue";
 import { isNumeric } from "@/helpers/value/isNumeric";
 import { CardTypes } from "@/enums/card/cardTypes";
+import { CardFormInputs } from "@/enums/card/cardFormInputs";
 
-export const InputCardCSV: FunctionComponent<{ cardType: CardTypes }> = ({
-  cardType,
-}) => {
+export const InputCardCSV: FunctionComponent<{
+  cardType: CardTypes;
+  onValid: (key: CardFormInputs, isValid: boolean) => void;
+}> = ({ cardType, onValid }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [displayValue, setDisplayValue] = useState<string>("");
 
-  const onInputChanged = (evt: any) => {
-    const value = evt?.target?.value;
-    if (!value || value == undefined || value == null || value.length < 1) {
-      setInputValue("");
+  useEffect(() => {
+    if (cardType == CardTypes.unknown) setInputValue("");
+  }, [cardType]);
+
+  const onInputChanged = (value: string) => {
+    const isNumber = isNumeric(value);
+    if (!isNumber) {
+      onValid(CardFormInputs.csv, false);
       return;
     }
 
-    const valueStr = value as string;
+    setInputValue(value);
 
-    const isNumber = isNumeric(valueStr);
-    if (!isNumber) return;
-
-    setInputValue(valueStr);
+    if (value.length >= 3) {
+      onValid(CardFormInputs.csv, true);
+    } else {
+      onValid(CardFormInputs.csv, false);
+    }
   };
 
   return (
@@ -30,7 +36,6 @@ export const InputCardCSV: FunctionComponent<{ cardType: CardTypes }> = ({
       text={"CSV"}
       type={"number"}
       value={inputValue}
-      displayValue={displayValue}
       max={cardType == CardTypes.americanExpress ? 4 : 3}
       disabled={cardType == CardTypes.unknown}
       onChange={onInputChanged}

@@ -8,8 +8,7 @@ export const IconAmericanExpress = (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 512 512"
     xmlSpace="preserve"
-    width="4em"
-    height="4em"
+    className="iconSize"
   >
     <path
       style={{ fill: "#306FC5" }}

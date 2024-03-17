@@ -1,4 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "poppins", "sans-serif";
+  font-size: 14px;
+}
+
 .card {
   /* todo do cool stuff here */
   color: orange;
+}
+
+.iconSize {
+  width: 3em;
+  height: 3em;
+}
+
+/* Dropdown Button */
+.dropdown-toggle {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Dropdown Menu items */
+.dropdown-item {
+  display: block;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown Menu items on hover */
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Show dropdown menu when the button is clicked */
+.dropdown-toggle:focus + .dropdown-menu {
+  display: block;
 }

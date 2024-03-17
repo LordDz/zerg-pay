@@ -4,43 +4,47 @@ import { getCardStartsWith } from "@/helpers/card/getCardType";
 import { CardTypes } from "@/enums/card/cardTypes";
 import { validateCardNumber } from "@/helpers/card/validateCardNumber";
 import { isNumeric } from "@/helpers/value/isNumeric";
+import { CardFormInputs } from "@/enums/card/cardFormInputs";
 
-export const InputCardNumber: FunctionComponent<{}> = ({}) => {
+export const InputCardNumber: FunctionComponent<{
+  currentCard: CardTypes;
+  onValid: (key: CardFormInputs, isValid: boolean) => void;
+  onChangeCardType: (card: CardTypes) => void;
+}> = ({ currentCard, onValid, onChangeCardType }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [displayValue, setDisplayValue] = useState<string>("");
-  const [cardType, setCardType] = useState<CardTypes>(CardTypes.unknown);
 
-  const onInputChanged = (evt: any) => {
-    const value = evt?.target?.value;
-    if (!value || value == undefined || value == null || value.length < 1) {
-      setCardType(CardTypes.unknown);
+  const onInputChanged = (value: string) => {
+    if (value.length === 0) {
+      onChangeCardType(CardTypes.unknown);
       setInputValue("");
+      onValid(CardFormInputs.number, false);
     }
 
-    let valueStr = value as string;
+    const isNumber = isNumeric(value);
 
-    const isNumber = isNumeric(valueStr);
+    if (!isNumber) {
+      onValid(CardFormInputs.number, false);
+      return;
+    }
 
-    console.log("isNumber: ", isNumber);
+    setInputValue(value);
 
-    if (!isNumber) return;
-
-    setInputValue(valueStr);
-
-    if (valueStr.length < 2) {
-      const cardType = getCardStartsWith(valueStr);
-      setCardType(cardType);
-      console.log("cardType: ", cardType);
+    if (value.length < 4) {
+      const cardType = getCardStartsWith(value);
+      onChangeCardType(cardType);
+      onValid(CardFormInputs.number, false);
       return;
     }
 
     if (
-      (cardType == CardTypes.americanExpress && valueStr.length >= 15) ||
-      valueStr.length > 15
+      (currentCard == CardTypes.americanExpress && value.length >= 15) ||
+      value.length > 15
     ) {
       const isValidated = validateCardNumber(value);
 
       console.log("isValidated: ", isValidated);
+
+      onValid(CardFormInputs.number, isValidated);
     }
   };
 
@@ -50,7 +54,6 @@ export const InputCardNumber: FunctionComponent<{}> = ({}) => {
       text={"Card Number"}
       type={"number"}
       value={inputValue}
-      displayValue={displayValue}
       max={16}
       onChange={onInputChanged}
     />

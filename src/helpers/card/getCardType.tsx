@@ -1,4 +1,4 @@
-import { CardTypes } from "../../enums/card/cardTypes";
+import { CardTypes } from "@/enums/card/cardTypes";
 
 const cardRegex: { [key in CardTypes]: RegExp } = {
   [CardTypes.visa]: /^4[0-9]{12}(?:[0-9]{3})?$/,

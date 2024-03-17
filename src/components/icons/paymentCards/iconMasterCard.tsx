@@ -1,6 +1,6 @@
 import React from "react";
 
-export const IconUnknown = (
+export const IconMasterCard = (
   <svg
     version="1.1"
     id="Layer_1"
@@ -8,10 +8,9 @@ export const IconUnknown = (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    width="4em"
-    height="4em"
     viewBox="0 0 152.4 108"
     xmlSpace="preserve"
+    className="iconSize"
   >
     <style>
       {`

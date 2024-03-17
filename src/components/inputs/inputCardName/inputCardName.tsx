@@ -2,23 +2,24 @@ import React, { FunctionComponent, useState } from "react";
 import { InputValue } from "../inputValue";
 import { CardTypes } from "@/enums/card/cardTypes";
 import { isText } from "@/helpers/value/isText";
+import { CardFormInputs } from "@/enums/card/cardFormInputs";
 
-export const InputCardName: FunctionComponent<{}> = ({}) => {
+export const InputCardName: FunctionComponent<{
+  onValid: (key: CardFormInputs, isValid: boolean) => void;
+}> = ({ onValid }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [displayValue, setDisplayValue] = useState<string>("");
   const [cardType, setCardType] = useState<CardTypes>(CardTypes.unknown);
 
-  const onInputChanged = (evt: any) => {
-    const value = evt?.target?.value;
+  const onInputChanged = (value: string) => {
+    const isOk = isText(value);
+    if (!isOk) {
+      onValid(CardFormInputs.name, false);
+    }
+    setInputValue(value);
 
-    let valueStr = value as string;
-
-    const isOk = isText(valueStr);
-    if (!isOk) return;
-
-    setInputValue(valueStr);
-
-    console.log("isOk: ", isText);
+    if (value.length > 3) {
+      onValid(CardFormInputs.name, true);
+    }
   };
 
   return (
@@ -27,7 +28,6 @@ export const InputCardName: FunctionComponent<{}> = ({}) => {
       text={"Name"}
       type={"text"}
       value={inputValue}
-      displayValue={displayValue}
       max={1000}
       onChange={onInputChanged}
     />
