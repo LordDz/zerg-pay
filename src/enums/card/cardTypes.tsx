@@ -3,5 +3,6 @@ export const enum CardTypes {
   masterCard = " MasterCard",
   americanExpress = "American Express",
   discover = "Discover",
+  maestro = "Maestro",
   unknown = "",
 }

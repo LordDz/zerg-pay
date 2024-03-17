@@ -41,9 +41,6 @@ export const InputCardNumber: FunctionComponent<{
       value.length > 15
     ) {
       const isValidated = validateCardNumber(value);
-
-      console.log("isValidated: ", isValidated);
-
       onValid(CardFormInputs.number, isValidated);
     }
   };
@@ -52,6 +49,7 @@ export const InputCardNumber: FunctionComponent<{
     <InputValue
       id={"cardNumber"}
       text={"Card Number"}
+      hideInput={true}
       type={"number"}
       value={inputValue}
       max={16}

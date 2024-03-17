@@ -36,11 +36,12 @@ export const InputValue: FunctionComponent<{
   id: string;
   text: string;
   type: "number" | "text";
+  hideInput?: boolean;
   value?: string;
   max?: number;
   disabled?: boolean;
   onChange: (val: string) => void;
-}> = ({ id, text, type, value, max, disabled, onChange }) => {
+}> = ({ id, text, hideInput, type, value, max, disabled, onChange }) => {
   const onInputChanged = (evt: any) => {
     onChange(evt?.target?.value ? evt.target.value : "");
   };
@@ -54,6 +55,7 @@ export const InputValue: FunctionComponent<{
         onKeyDown={(event) => {
           if (
             event.key !== "Backspace" &&
+            event.key !== "Tab" &&
             event.key !== " " &&
             !(event.ctrlKey && (event.key === "a" || event.key === "x")) &&
             (type == "number"
@@ -64,7 +66,7 @@ export const InputValue: FunctionComponent<{
           }
         }}
         aria-label={text}
-        type="text"
+        type={hideInput ? "password" : "text"}
         value={value}
         maxLength={max}
         onChange={onInputChanged}

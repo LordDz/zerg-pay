@@ -5,6 +5,7 @@ import { IconAmericanExpress } from "./paymentCards/iconAmericanExpress";
 import { IconVisa } from "./paymentCards/iconVisa";
 import { IconDiscover } from "./paymentCards/iconDiscover";
 import { IconUnknown } from "./paymentCards/iconUnknown";
+import { IconMaestro } from "./paymentCards/iconMaestro";
 
 const renderIcon = (cardType: CardTypes) => {
   switch (cardType) {
@@ -16,6 +17,8 @@ const renderIcon = (cardType: CardTypes) => {
       return IconVisa;
     case CardTypes.discover:
       return IconDiscover;
+    case CardTypes.maestro:
+      return IconMaestro;
   }
   return IconUnknown;
 };
