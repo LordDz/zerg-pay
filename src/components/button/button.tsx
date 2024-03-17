@@ -19,7 +19,8 @@ export const Button: FunctionComponent<{
   type: "submit" | "reset" | "button";
   text: string;
   disabled: boolean;
-}> = ({ type, text, disabled }) => {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}> = ({ type, text, onClick, disabled }) => {
   const interactable = disabled ? 0 : 1;
   return (
     <Btn
@@ -27,6 +28,7 @@ export const Button: FunctionComponent<{
       interactable={interactable}
       disabled={disabled}
       aria-disabled={disabled}
+      onClick={onClick}
     >
       <BtnLabel interactable={interactable}>{text}</BtnLabel>
     </Btn>

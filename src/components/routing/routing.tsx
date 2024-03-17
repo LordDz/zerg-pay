@@ -1,6 +1,8 @@
-import { PagePayement } from "@/pages/payment/pagePayement";
 import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
+import { PageText } from "@/pages/text/pageText";
+import { PageArray } from "@/pages/array/pageArray";
+import { PagePayement } from "@/pages/payment/pagePayement";
 
 const RoutingContainer = styled.div`
   display: flex;
@@ -24,7 +26,7 @@ const BtnLabel = styled.label<{ interactable: number }>`
 
 // Extremely basic routing since I don't have time to implement a routing system
 export const Routing: FunctionComponent<{}> = () => {
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
 
   const onClickBtn = (newPage: number) => {
     setPage(newPage);
@@ -34,11 +36,11 @@ export const Routing: FunctionComponent<{}> = () => {
     <>
       <RoutingContainer>
         <Btn interactable={page !== 1 ? 1 : 0} onClick={() => onClickBtn(1)}>
-          <BtnLabel interactable={page !== 1 ? 1 : 0}>1. Card</BtnLabel>
+          <BtnLabel interactable={page !== 1 ? 1 : 0}>1. Text</BtnLabel>
         </Btn>
 
         <Btn interactable={page !== 2 ? 1 : 0} onClick={() => onClickBtn(2)}>
-          <BtnLabel interactable={page !== 2 ? 1 : 0}>2. Card</BtnLabel>
+          <BtnLabel interactable={page !== 2 ? 1 : 0}>2. Array</BtnLabel>
         </Btn>
 
         <Btn interactable={page !== 3 ? 1 : 0} onClick={() => onClickBtn(3)}>
@@ -46,6 +48,8 @@ export const Routing: FunctionComponent<{}> = () => {
         </Btn>
       </RoutingContainer>
 
+      {page == 1 && <PageText />}
+      {page == 2 && <PageArray />}
       {page == 3 && <PagePayement />}
     </>
   );
