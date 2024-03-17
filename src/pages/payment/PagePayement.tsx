@@ -44,8 +44,6 @@ export const PagePayement: FunctionComponent = () => {
     setCanSubmit(checkValid(valid));
   }, [valid]);
 
-  console.log("valid: ", valid);
-
   const onChangeCardType = (card: CardTypes) => {
     console.log({ card });
     setCardType(card);
