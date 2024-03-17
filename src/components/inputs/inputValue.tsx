@@ -54,6 +54,7 @@ export const InputValue: FunctionComponent<{
         onKeyDown={(event) => {
           if (
             event.key !== "Backspace" &&
+            event.key !== " " &&
             !(event.ctrlKey && (event.key === "a" || event.key === "x")) &&
             (type == "number"
               ? !/[0-9]/.test(event.key)
