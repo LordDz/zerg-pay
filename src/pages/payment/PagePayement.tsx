@@ -45,15 +45,11 @@ export const PagePayement: FunctionComponent = () => {
   }, [valid]);
 
   const onChangeCardType = (card: CardTypes) => {
-    console.log({ card });
     setCardType(card);
   };
 
   const onSubmit = () => {
-    console.log("form onSubmit: ", valid);
-
     if (!canSubmit) {
-      debugger;
       return false;
     }
     return true;
