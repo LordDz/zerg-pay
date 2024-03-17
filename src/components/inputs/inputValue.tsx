@@ -32,16 +32,6 @@ const InputLabel = styled.label`
   border-radius: 2px;
 `;
 
-const onlyNum = !/[0-9]/;
-const onlyText = /^[a-zA-Z\s]*$/;
-
-const getAlias = (type: "number" | "text") => {
-  if (type == "number") {
-    return !/[0-9]/;
-  }
-  return /^[a-zA-Z\s]*$/;
-};
-
 export const InputValue: FunctionComponent<{
   id: string;
   text: string;
@@ -63,9 +53,11 @@ export const InputValue: FunctionComponent<{
         id={id}
         onKeyDown={(event) => {
           if (
-            type == "number"
+            event.key !== "Backspace" &&
+            !(event.ctrlKey && (event.key === "a" || event.key === "x")) &&
+            (type == "number"
               ? !/[0-9]/.test(event.key)
-              : !/^[a-zA-Z\s]*$/.test(event.key)
+              : !/^[a-zA-Z\s]*$/.test(event.key))
           ) {
             event.preventDefault();
           }

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { Card } from "@/components/card/card";
 import { InputCardNumber } from "@/components/inputs/inputCardNumber/inputCardNumber";
 import { InputCardName } from "@/components/inputs/inputCardName/inputCardName";
@@ -21,10 +21,17 @@ const validInputs = {
   csv: false,
 };
 
+const checkValid = (valid: any) => {
+  if (!valid.name || !valid.year || !valid.month || !valid.csv) {
+    return false;
+  }
+  return true;
+};
+
 export const PagePayement: FunctionComponent = () => {
   const [cardType, setCardType] = useState<CardTypes>(CardTypes.unknown);
-  const [isSubmitting, setSubmitting] = useState(false);
   const [valid, setValid] = useState(validInputs);
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const onValid = (key: CardFormInputs, isValid: boolean) => {
     setValid((prevValid: any) => ({
@@ -32,6 +39,10 @@ export const PagePayement: FunctionComponent = () => {
       [key]: isValid,
     }));
   };
+
+  useEffect(() => {
+    setCanSubmit(checkValid(valid));
+  }, [valid]);
 
   console.log("valid: ", valid);
 
@@ -43,23 +54,11 @@ export const PagePayement: FunctionComponent = () => {
   const onSubmit = () => {
     console.log("form onSubmit: ", valid);
 
-    if (
-      !valid.number ||
-      !valid.name ||
-      !valid.year ||
-      !valid.month ||
-      !valid.csv
-    ) {
+    if (!canSubmit) {
       debugger;
-
       return false;
     }
-    debugger;
     return true;
-  };
-
-  const finishSubmit = () => {
-    console.log("Finishing submitting!");
   };
 
   return (
@@ -90,7 +89,7 @@ export const PagePayement: FunctionComponent = () => {
         </CardCenter>
 
         <CardColumn>
-          <Button type="submit" text="Pay" />
+          <Button type="submit" text="Pay" disabled={!canSubmit} />
         </CardColumn>
       </Card>
     </form>
